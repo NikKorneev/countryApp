@@ -79,9 +79,9 @@ export const HomePage = ({ countries, setCountries }: Props) => {
 						);
 					})}
 
-				{!filteredCountries?.length && countries && (
-					<h3>Данных не обнаружено</h3>
-				)}
+				{!filteredCountries?.length &&
+					!!countries?.length &&
+					!isPending && <h3>Данных не обнаружено</h3>}
 
 				{isPending && <h4>Загрузка...</h4>}
 			</List>

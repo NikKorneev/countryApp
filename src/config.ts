@@ -4,11 +4,13 @@ export const ALL_COUNTRIES =
 	BASE_URL + "all?fields=name,capital,flags,population,region";
 
 export const searchByCountry = (name: string) => {
-	return BASE_URL + "/name/" + name;
+	return BASE_URL + "name/" + name;
 };
 
-export const filterByCode = (codes: string[]) => {
-	return BASE_URL + "alpha?codes" + codes.join(",");
+export const filterByCode = (codes: string[] | undefined | string) => {
+	if (codes != undefined && Array.isArray(codes))
+		return BASE_URL + "alpha?codes=" + codes.join(",");
+	else return "";
 };
 
 export type Country = {
